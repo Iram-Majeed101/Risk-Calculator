@@ -11,8 +11,8 @@
 <div class="card">
     <h2>XAUUSD Risk Calculator</h2>
 
-    <label>Account Balance ($)</label>
-    <input type="number" id="balance" value="1300">
+    <label>Account Balance (Cents)</label>
+    <input type="number" id="balance" value="130000">
 
     <label>Risk Percentage (%)</label>
     <input type="number" id="risk" value="1">
@@ -31,7 +31,8 @@
 <script>
 function calculate() {
 
-    let balance = parseFloat(document.getElementById("balance").value);
+    let balanceCents = parseFloat(document.getElementById("balance").value);
+    let balance = balanceCents / 100;
     let riskPercent = parseFloat(document.getElementById("risk").value);
     let sl = parseFloat(document.getElementById("sl").value);
     let tp = parseFloat(document.getElementById("tp").value);
@@ -71,8 +72,8 @@ function calculate() {
 &nbsp;&nbsp;&nbsp;&nbsp;TRADE RISK DETAILS<br>
 ═══════════════════════════════<br><br>
 
-💰 Account Balance: $${balance.toFixed(2)}<br>
-🪙 Balance in Cents: ${(balance*100).toLocaleString()} cents<br>
+🪙 Account Balance: ${balanceCents.toLocaleString()} cents<br>
+💰 Balance in USD: $${balance.toFixed(2)}<br>
 
 📦 Lot Size:
 <span class="lot-highlight">
